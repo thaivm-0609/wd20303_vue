@@ -96,7 +96,7 @@ const listUsers = reactive([ //array
               * có điều kiện :class="{ tenClass:điều kiện để bật class }" 
           -->
           <td :class="{ active: listUsers[0].isActive }">{{ listUsers[0].isActive }}</td>
-          <button @click="changeStatus(0)" class="btn btn-success">Active</button>
+          <td><button @click="changeStatus(0)" class="btn btn-success">Active</button></td>
         </tr>
         <tr>
           <!-- style bind: cú pháp: :style="{tenThuocTinh: 'value'}" -->
@@ -104,13 +104,13 @@ const listUsers = reactive([ //array
           <td :style="{fontSize: listUsers[1].age > 80 ? '50px' : '20px'}">{{ listUsers[1].age }}</td>
           <td><img :src="listUsers[1].avatar" alt=""></td>
           <td :class="{ active: listUsers[1].isActive }">{{ listUsers[1].isActive }}</td>
-          <button>Active</button>
+          <td><button @click="changeStatus(1)" class="btn btn-success">Active</button></td>
         </tr>
       </tbody>
     </table>
-    <!-- <div class="wrapper">
+    <div class="wrapper">
       <HelloWorld msg="You did it!" />
-    </div> -->
+    </div>
   </header>
 
   <main>
