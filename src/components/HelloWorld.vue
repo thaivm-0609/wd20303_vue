@@ -1,30 +1,28 @@
 <script setup>
-import { reactive, ref } from 'vue';
+import axios from 'axios';
+import { onMounted, reactive, ref } from 'vue';
 
-defineProps({
+const props = defineProps({
   msg: {
     type: String,
     required: true,
   },
 })
 
-const isLoggedIn = ref(false);
-const checkInOut = () => {
-  isLoggedIn.value = !isLoggedIn.value;
-}
+// const isLoggedIn = ref(false);
+// const checkInOut = () => {
+//   isLoggedIn.value = !isLoggedIn.value;
+// }
 
-const listStudents = reactive([
-  {
-    name: 'Ngọc Anh',
-    major: 'CNTT',
-    point: 4,
-  },
-  {
-    name: 'XYZ',
-    major: 'CNTT',
-    point: 4,
-  }
-]);
+//B1: khởi tạo biến để lưu dữ liệu lấy từ DB ra
+const products = reactive([]);
+//B2: call api để lấy dữ liệu từ json-server
+//onMounted: tự động thực thi code khi load component
+onMounted(async() => {
+  const response = await axios.get('http://localhost:3000/products');
+  products.value = response.data; //gán data mà response trả về cho biến products
+  console.log(products);
+})
 </script>
 
 <template>
@@ -36,13 +34,34 @@ const listStudents = reactive([
       <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
     </h3>
 
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Image</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(p) in products" :key="p.id">
+          <td>{{ p.id }}</td>
+          <td>{{ p.name }}</td>
+          <td>{{ p.price }}</td>
+          <td><img :src="p.image" alt=""></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
     <!-- condition rendering: hiển thị có điều kiện
       <element v-show="condition"></element>
       <element v-if="condition"></element>
       <element v-else-if="condition2"></element>
       <element v-else></element>
     -->
-    <h1 v-if="isLoggedIn">Bạn đã đăng nhập thành công</h1>
+    <!-- <h1 v-if="isLoggedIn">Bạn đã đăng nhập thành công</h1>
     <h1 v-show="isLoggedIn">Bạn đã đăng nhập thành công</h1>
     <button 
       v-if="isLoggedIn" 
@@ -57,18 +76,8 @@ const listStudents = reactive([
       class="btn btn-success"
     >
       Đăng nhập
-    </button>
+    </button> -->
 
-    <h1>Họ tên: {{ listStudents[0].name }}</h1>
-    <h1>Ngành học: {{ listStudents[0].major }}</h1>
-    <h1>Điểm tổng kế: {{ listStudents[0].point }}</h1>
-    <h1>Xếp hạng: 
-      <span v-if="9 <= listStudents[0].point">Xuất sắc</span>
-      <span v-else-if="8 <= listStudents[0].point">Giỏi</span>
-      <span v-else-if="6 <= listStudents[0].point">Khá</span>
-      <span v-else-if="5 <= listStudents[0].point">TB</span>
-      <span v-else>Không được tốt nghiệp</span>
-    </h1>
   </div>
 </template>
 

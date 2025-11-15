@@ -74,7 +74,7 @@ const listUsers = reactive([ //array
     <!-- <p>{{ thaivm2.name }}</p>
     <p>{{ thaivm2.age }}</p>
     <p>{{ thaivm2.isActive }}</p> -->
-
+<!--
     <table class="table">
       <thead>
         <tr>
@@ -86,28 +86,23 @@ const listUsers = reactive([ //array
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>{{ listUsers[0].name }}</td>
-          <td :style="{fontSize: listUsers[0].age > 80 ? '50px' : '20px'}">{{ listUsers[0].age }}</td>
-          <td><img v-bind:src="listUsers[0].avatar" alt=""></td>
-          <!-- class binding
-            cú pháp: 
-              * v-bind:class="tenClass"
-              * có điều kiện :class="{ tenClass:điều kiện để bật class }" 
-          -->
-          <td :class="{ active: listUsers[0].isActive }">{{ listUsers[0].isActive }}</td>
-          <td><button @click="changeStatus(0)" class="btn btn-success">Active</button></td>
-        </tr>
-        <tr>
-          <!-- style bind: cú pháp: :style="{tenThuocTinh: 'value'}" -->
-          <td :style="{ backgroundColor: 'red'}">{{ listUsers[1].name }}</td>
-          <td :style="{fontSize: listUsers[1].age > 80 ? '50px' : '20px'}">{{ listUsers[1].age }}</td>
-          <td><img :src="listUsers[1].avatar" alt=""></td>
-          <td :class="{ active: listUsers[1].isActive }">{{ listUsers[1].isActive }}</td>
-          <td><button @click="changeStatus(1)" class="btn btn-success">Active</button></td>
+        vòng lặp:
+          cú pháp: 
+                           (số ít) in (số nhiều)      
+          <element v-for="(item, index) in array" :key="item.id">
+        
+        <tr v-for="(user,index) in listUsers" :key="index">
+          <td>{{ user.name }}</td>
+          <td :style="{fontSize: user.age > 80 ? '50px' : '20px'}">{{ user.age }}</td>
+          <td><img v-bind:src="user.avatar" alt=""></td>
+           class binding cú pháp: v-bind:class="tenClass"
+            có điều kiện :class="{ tenClass:điều kiện để bật class }"
+          <td :class="{ active: user.isActive }">{{ user.isActive }}</td>
+          <td><button @click="changeStatus(index)" class="btn btn-success">Active</button></td>
         </tr>
       </tbody>
     </table>
+  -->
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
     </div>
