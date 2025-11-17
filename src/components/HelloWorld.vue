@@ -15,13 +15,25 @@ const props = defineProps({
 // }
 
 //B1: khởi tạo biến để lưu dữ liệu lấy từ DB ra
-const products = reactive([]);
-//B2: call api để lấy dữ liệu từ json-server
-//onMounted: tự động thực thi code khi load component
-onMounted(async() => {
+const products = ref([]);
+//khai báo hàm lấy danh sách sản phẩm
+const getProducts = async () => {
+  //B2: call api để lấy dữ liệu từ json-server
   const response = await axios.get('http://localhost:3000/products');
-  products.value = response.data; //gán data mà response trả về cho biến products
-  console.log(products);
+  //B3: gán dữ liệu server trả về cho biến products
+  products.value = response.data;
+}
+
+
+const deleteProduct = async (id) => {
+  if (confirm('Bạn có chắc không?')) {
+    await axios.delete(`http://localhost:3000/products/${id}`);
+    getProducts(); //gọi hàm để load danh sách sản phẩm mới
+  }
+}
+//onMounted: tự động thực thi code khi load component
+onMounted(() => {
+  getProducts();
 })
 </script>
 
@@ -50,7 +62,14 @@ onMounted(async() => {
           <td>{{ p.name }}</td>
           <td>{{ p.price }}</td>
           <td><img :src="p.image" alt=""></td>
-          <td></td>
+          <td>
+            <button 
+              @click="deleteProduct(p.id)"
+              class="btn btn-danger"
+            > 
+              Delete
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
