@@ -31,6 +31,7 @@ const deleteProduct = async (id) => {
     getProducts(); //gọi hàm để load danh sách sản phẩm mới
   }
 }
+
 //onMounted: tự động thực thi code khi load component
 onMounted(() => {
   getProducts();
