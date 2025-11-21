@@ -1,16 +1,22 @@
 {
   "products": [
     {
-      "id": 1,
+      "id": "1",
       "name": "thaivm2",
       "price": 10000,
-      "image": ""
+      "image": "https://picsum.photos/200"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "thaivm3",
       "price": 20000,
-      "image": ""
+      "image": "https://picsum.photos/200"
+    },
+    {
+      "id": "72c2",
+      "name": "thaivm10",
+      "price": 99999,
+      "image": "https://picsum.photos/50"
     }
   ],
   "users": []

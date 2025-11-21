@@ -28,6 +28,12 @@ onMounted(() => {
 
 <template>
     <h1>Đây là trang danh sách sản phẩm</h1>
+    <router-link 
+      :to="{name: 'product-create'}"
+      class="btn btn-primary"
+    >
+      Create
+    </router-link>
     <table class="table">
         <thead>
             <tr>
@@ -45,14 +51,26 @@ onMounted(() => {
             <td>{{ p.price }}</td>
             <td><img :src="p.image" alt=""></td>
             <td>
-                <button 
+              <router-link
+                :to="`/products/${p.id}`"
+                class="btn btn-info me-2"
+              >
+                Detail
+              </router-link>
+              <router-link
+                :to="`/products/update/${p.id}`"
+                class="btn btn-warning me-2"
+              >
+                Edit
+              </router-link>
+              <button 
                 @click="deleteProduct(p.id)"
                 class="btn btn-danger"
-                > 
+              > 
                 Delete
-                </button>
+              </button>
             </td>
-            </tr>
+          </tr>
         </tbody>
     </table>
 </template>
