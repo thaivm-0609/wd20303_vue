@@ -4,20 +4,36 @@
       "id": "1",
       "name": "thaivm2",
       "price": 10000,
-      "image": "https://picsum.photos/200"
+      "image": "https://picsum.photos/200",
+      "description": "SP1"
     },
     {
       "id": "2",
       "name": "thaivm3",
       "price": 20000,
-      "image": "https://picsum.photos/200"
+      "image": "https://picsum.photos/200",
+      "description": "SP2"
     },
     {
       "id": "72c2",
       "name": "thaivm10",
       "price": 99999,
-      "image": "https://picsum.photos/50"
+      "image": "https://picsum.photos/50",
+      "description": "SP3"
     }
   ],
-  "users": []
+  "users": [
+    {
+      "id": 1,
+      "name": "Vương Minh Thái",
+      "image": "",
+      "level": 1
+    },
+    {
+      "id": 2,
+      "name": "Vương Minh Thái22222",
+      "image": "",
+      "level": 2
+    }
+  ]
 }
