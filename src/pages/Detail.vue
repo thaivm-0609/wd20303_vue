@@ -1,4 +1,5 @@
 <script setup>
+import ProductCard from '@/components/ProductCard.vue';
 import axios from 'axios';
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
@@ -20,9 +21,10 @@ onMounted(() => {
 
 <template>
     <h1>Đây là trang chi tiết</h1>
-    <h3>ID: {{ product.id }}</h3>
+    <ProductCard :p="product"/>
+    <!-- <h3>ID: {{ product.id }}</h3>
     <h3>Tên sản phẩm: {{ product.name }}</h3>
     <h3>Giá sản phẩm: {{ product.price }}</h3>
     <h3>Image:</h3>
-    <img :src="product.image" alt="">
+    <img :src="product.image" alt=""> -->
 </template>
