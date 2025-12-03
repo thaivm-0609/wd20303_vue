@@ -1,4 +1,5 @@
 <script setup>
+import ProductItem from '@/components/ProductItem.vue';
 import axios from 'axios';
 import { onMounted, ref } from 'vue';
 
@@ -45,7 +46,17 @@ onMounted(() => {
             </tr>
         </thead>
         <tbody>
-            <tr v-for="(p) in products" :key="p.id">
+          <!-- emit là một cơ chế để component con
+            có thể gửi sự kiện ngược lên cho component cha
+            @key="tenHam" 
+          -->
+          <ProductItem 
+            v-for="p in products"
+            :product="p"
+            @delete="deleteProduct"
+          />
+
+          <!-- <tr v-for="(p) in products" :key="p.id">
             <td>{{ p.id }}</td>
             <td>{{ p.name }}</td>
             <td>{{ p.price }}</td>
@@ -70,7 +81,7 @@ onMounted(() => {
                 Delete
               </button>
             </td>
-          </tr>
+          </tr> -->
         </tbody>
     </table>
 </template>

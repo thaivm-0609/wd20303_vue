@@ -1,13 +1,6 @@
 {
   "products": [
     {
-      "id": "1",
-      "name": "thaivm2",
-      "price": 10000,
-      "image": "https://picsum.photos/200",
-      "description": "SP1"
-    },
-    {
       "id": "2",
       "name": "thaivm3",
       "price": 20000,
@@ -24,13 +17,13 @@
   ],
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Vương Minh Thái",
       "image": "",
       "level": 1
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Vương Minh Thái22222",
       "image": "",
       "level": 2
